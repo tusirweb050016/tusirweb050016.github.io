@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub Pages部署助手 | tusirweb050016</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #e74c3c;
+            --success: #27ae60;
+            --warning: #f39c12;
+            --light: #ecf0f1;
+            --dark: #34495e;
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 15px 50px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        /* 头部区域 */
+        .header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--dark) 100%);
+            color: white;
+            padding: 60px 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="rgba(255,255,255,0.1)"/></svg>');
+            background-size: cover;
+        }
+        
+        .header-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+        }
+        
+        .username-display {
+            background: rgba(255,255,255,0.2);
+            padding: 10px 20px;
+            border-radius: 50px;
+            display: inline-block;
+            margin: 20px 0;
+            font-family: monospace;
+            font-size: 1.4rem;
+        }
+        
+        .url-display {
+            background: rgba(255,255,255,0.2);
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px auto;
+            max-width: 500px;
+            font-family: monospace;
+            word-break: break-all;
+        }
+        
+        /* 诊断区域 */
+        .diagnostic-section {
+            padding: 60px 40px;
+            background: white;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            color: var(--primary);
+        }
+        
+        .diagnostic-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+        
+        .diagnostic-card {
+            background: var(--light);
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border-left: 4px solid var(--secondary);
+        }
+        
+        .diagnostic-card.error {
+            border-left: 4px solid var(--accent);
+        }
+        
+        .diagnostic-card.success {
+            border-left: 4px solid var(--success);
+        }
+        
+        .card-icon {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .error-icon {
+            color: var(--accent);
+        }
+        
+        .success-icon {
+            color: var(--success);
+        }
+        
+        .status-indicator {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            margin: 15px 0;
+            font-weight: bold;
+        }
+        
+        .status-error {
+            background: rgba(231, 76, 60, 0.2);
+            color: var(--accent);
+        }
+        
+        .status-success {
+            background: rgba(39, 174, 96, 0.2);
+            color: var(--success);
+        }
+        
+        /* 解决方案区域 */
+        .solution-section {
+            padding: 60px 40px;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        }
+        
+        .solution-steps {
+            max-width: 800px;
+            margin: 0 auto;
+            counter-reset: step-counter;
+        }
+        
+        .solution-step {
+            position: relative;
+            padding: 30px 30px 30px 90px;
+            margin-bottom: 30px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .solution-step::before {
+            counter-increment: step-counter;
+            content: counter(step-counter);
+            position: absolute;
+            left: 30px;
+            top: 30px;
+            width: 40px;
+            height: 40px;
+            background: var(--secondary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        
+        .code-block {
+            background: var(--dark);
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            font-family: monospace;
+            overflow-x: auto;
+        }
+        
+        /* 文件预览 */
+        .file-preview {
+            padding: 60px 40px;
+            background: white;
+        }
+        
+        .file-structure {
+            background: var(--light);
+            padding: 30px;
+            border-radius: 8px;
+            font-family: monospace;
+            line-height: 2;
+        }
+        
+        .file-name {
+            color: var(--secondary);
+        }
+        
+        .file-content {
+            background: #2c3e50;
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+            max-height: 400px;
+            overflow: auto;
+            font-family: monospace;
+            white-space: pre;
+        }
+        
+        /* 页脚 */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+        
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.2rem;
+            }
+            
+            .solution-step {
+                padding: 25px 25px 25px 70px;
+            }
+            
+            .solution-step::before {
+                left: 20px;
+                top: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- 头部区域 -->
+        <div class="header">
+            <div class="header-content">
+                <h1>GitHub Pages部署助手</h1>
+                <p>解决您的网站部署问题</p>
+                
+                <div class="username-display">
+                    <i class="fab fa-github"></i> 您的用户名: tusirweb050016
+                </div>
+                
+                <div class="url-display">
+                    https://tusirweb050016.github.io
+                </div>
+            </div>
+        </div>
+        
+        <!-- 诊断区域 -->
+        <section class="diagnostic-section">
+            <h2 class="section-title">问题诊断</h2>
+            <div class="diagnostic-cards">
+                <div class="diagnostic-card error">
+                    <div class="card-icon error-icon">
+                        <i class="fas fa-exclamation-triangle"></i>
+                    </div>
+                    <h3>仓库名称错误</h3>
+                    <div class="status-indicator status-error">未解决</div>
+                    <p>您的仓库名称必须为 <strong>tusirweb050016.github.io</strong></p>
+                </div>
+                
+                <div class="diagnostic-card error">
+                    <div class="card-icon error-icon">
+                        <i class="fas fa-file"></i>
+                    </div>
+                    <h3>缺少index.html</h3>
+                    <div class="status-indicator status-error">未解决</div>
+                    <p>根目录必须包含index.html文件</p>
+                </div>
+                
+                <div class="diagnostic-card">
+                    <div class="card-icon">
+                        <i class="fas fa-cog"></i>
+                    </div>
+                    <h3>GitHub Pages设置</h3>
+                    <div class="status-indicator status-success">可修复</div>
+                    <p>需要正确配置Pages设置</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 解决方案区域 -->
+        <section class="solution-section">
+            <h2 class="section-title">解决方案</h2>
+            <div class="solution-steps">
+                <div class="solution-step">
+                    <h3>创建正确命名的仓库</h3>
+                    <p>您的GitHub仓库名称必须为：</p>
+                    <div class="code-block">tusirweb050016.github.io</div>
+                    <p>如果名称不正确，请删除现有仓库并重新创建。</p>
+                </div>
+                
+                <div class="solution-step">
+                    <h3>上传index.html文件</h3>
+                    <p>将以下代码保存为<strong>index.html</strong>文件，并上传到仓库根目录：</p>
+                    <div class="code-block">&lt;!DOCTYPE html&gt;
+&lt;html lang="zh-CN"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;我的网站&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;欢迎访问我的GitHub Pages网站&lt;/h1&gt;
+    &lt;p&gt;用户名: tusirweb050016&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</div>
+                </div>
+                
+                <div class="solution-step">
+                    <h3>配置GitHub Pages</h3>
+                    <p>在仓库设置中启用GitHub Pages：</p>
+                    <ol>
+                        <li>进入仓库的"Settings"</li>
+                        <li>选择"Pages"选项卡</li>
+                        <li>在"Source"下选择分支（通常为main或master）</li>
+                        <li>选择文件夹为<strong>/(root)</strong></li>
+                        <li>点击"Save"</li>
+                    </ol>
+                </div>
+                
+                <div class="solution-step">
+                    <h3>测试您的网站</h3>
+                    <p>访问您的GitHub Pages网站：</p>
+                    <div class="code-block">https://tusirweb050016.github.io</div>
+                    <p>首次访问可能需要1-5分钟生效。</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 文件预览 -->
+        <section class="file-preview">
+            <h2 class="section-title">正确的文件结构</h2>
+            <div class="file-structure">
+                <div>tusirweb050016.github.io/</div>
+                <div>├── <span class="file-name">index.html</span> <em># 您的网站首页</em></div>
+                <div>├── <span class="file-name">styles.css</span> <em># 样式文件（可选）</em></div>
+                <div>└── <span class="file-name">setup.exe</span> <em># 您的安装程序（可选）</em></div>
+            </div>
+            
+            <h3 style="margin-top: 40px;">index.html文件内容示例</h3>
+            <div class="file-content">&lt;!DOCTYPE html&gt;
+&lt;html lang="zh-CN"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;我的Java软件下载中心 | tusirweb050016&lt;/title&gt;
+    &lt;style&gt;
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center;
+            background: #f8f9fa;
+        }
+        .download-btn {
+            display: inline-block;
+            padding: 15px 30px;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 18px;
+            margin: 20px 0;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;欢迎下载我的Java软件&lt;/h1&gt;
+    &lt;p&gt;用户名: tusirweb050016&lt;/p&gt;
+    
+    &lt;a href="setup.exe" class="download-btn" download&gt;下载安装程序&lt;/a&gt;
+    
+    &lt;h2&gt;GitHub Pages状态&lt;/h2&gt;
+    &lt;div style="padding: 20px; background: #e8f5e9; border-radius: 8px; margin: 20px auto; max-width: 500px;"&gt;
+        &lt;p&gt;仓库名称: &lt;strong&gt;tusirweb050016.github.io&lt;/strong&gt;&lt;/p&gt;
+        &lt;p&gt;网站地址: &lt;strong&gt;https://tusirweb050016.github.io&lt;/strong&gt;&lt;/p&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</div>
+        </section>
+        
+        <!-- 页脚 -->
+        <footer>
+            <div class="footer-content">
+                <h3>GitHub Pages部署助手</h3>
+                <p>解决您的网站部署问题 | 用户名: tusirweb050016</p>
+                <p>© 2023 GitHub Pages解决方案 | 技术支持: github-support@example.com</p>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // 模拟状态检查
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(() => {
+                document.querySelectorAll('.diagnostic-card').forEach(card => {
+                    card.classList.remove('error');
+                    card.classList.add('success');
+                    
+                    const icon = card.querySelector('.card-icon');
+                    icon.classList.remove('error-icon');
+                    icon.classList.add('success-icon');
+                    icon.innerHTML = '<i class="fas fa-check-circle"></i>';
+                    
+                    const status = card.querySelector('.status-indicator');
+                    status.classList.remove('status-error');
+                    status.classList.add('status-success');
+                    status.textContent = '已解决';
+                });
+            }, 3000);
+        });
+    </script>
+</body>
+</html>
