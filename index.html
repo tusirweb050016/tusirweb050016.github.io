@@ -14,7 +14,7 @@
         }
         
         body {
-            background: linear-gradient(135deg, #f0f9eb 0%, #e6f7df 100%);
+            background: linear-gradient(135deg, #f0ecfb 0%, #e6f7ef 100%);
             min-height: 100vh;
             padding: 20px;
             display: flex;
@@ -31,11 +31,11 @@
             border-radius: 16px;
             box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
             overflow: hidden;
-            border: 1px solid #e1f0d9;
+            border: 1px solid #e4d8f5;
         }
         
         header {
-            background: linear-gradient(to right, #2e7d32, #4caf50);
+            background: linear-gradient(to right, #8e44ad, #27ae60);
             color: white;
             text-align: center;
             padding: 50px 30px;
@@ -86,13 +86,17 @@
             position: absolute;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, #81c784 0%, #4caf50 100%);
+            background: linear-gradient(135deg, #9b59b6 0%, #2ecc71 100%);
             opacity: 0.1;
         }
         
         .app-icon i {
             font-size: 60px;
-            color: #2e7d32;
+            background: linear-gradient(135deg, #8e44ad, #2ecc71);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            color: transparent;
         }
         
         .content {
@@ -103,9 +107,9 @@
             text-align: center;
             margin-bottom: 40px;
             padding: 30px;
-            background: #f8fcf7;
+            background: #f8f7fc;
             border-radius: 12px;
-            border: 2px dashed #c8e6c9;
+            border: 2px dashed #d8c8f0;
             position: relative;
         }
         
@@ -114,7 +118,7 @@
             align-items: center;
             justify-content: center;
             padding: 18px 65px;
-            background: linear-gradient(to right, #2e7d32, #4caf50);
+            background: linear-gradient(to right, #8e44ad, #27ae60);
             color: white;
             text-decoration: none;
             border-radius: 60px;
@@ -122,7 +126,7 @@
             font-weight: 600;
             margin: 25px 0;
             transition: all 0.3s ease;
-            box-shadow: 0 8px 25px rgba(46, 125, 50, 0.4);
+            box-shadow: 0 8px 25px rgba(142, 68, 173, 0.4);
             position: relative;
             overflow: hidden;
         }
@@ -134,14 +138,14 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(to right, #388e3c, #4caf50);
+            background: linear-gradient(to right, #9b59b6, #2ecc71);
             opacity: 0;
             transition: opacity 0.3s ease;
         }
         
         .download-btn:hover {
             transform: translateY(-5px);
-            box-shadow: 0 12px 30px rgba(46, 125, 50, 0.5);
+            box-shadow: 0 12px 30px rgba(142, 68, 173, 0.5);
         }
         
         .download-btn:hover::before {
@@ -162,7 +166,7 @@
         
         .download-info {
             font-size: 1.1rem;
-            color: #4caf50;
+            color: #8e44ad;
             margin-top: 15px;
             display: flex;
             justify-content: center;
@@ -171,7 +175,7 @@
         }
         
         .info-item {
-            background: rgba(76, 175, 80, 0.1);
+            background: rgba(142, 68, 173, 0.1);
             padding: 8px 18px;
             border-radius: 30px;
             display: inline-flex;
@@ -195,13 +199,13 @@
         .version-container {
             background: white;
             border-radius: 16px;
-            padding: 40px;
+            padding: 30px;
             width: 90%;
-            max-width: 600px;
+            max-width: 500px; /* 缩小弹窗尺寸 */
             box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
             animation: popup 0.4s ease;
             position: relative;
-            border: 2px solid #c8e6c9;
+            border: 2px solid #d8c8f0;
         }
         
         @keyframes popup {
@@ -211,27 +215,27 @@
         
         .version-header {
             text-align: center;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
         }
         
         .version-header h2 {
-            color: #2e7d32;
+            color: #8e44ad;
             margin-bottom: 10px;
-            font-size: 2rem;
+            font-size: 1.8rem;
         }
         
         .version-options {
             display: flex;
             flex-direction: column;
-            gap: 25px;
+            gap: 15px;
         }
         
         .version-card {
-            background: #f8fcf7;
+            background: #f8f7fc;
             border-radius: 12px;
-            padding: 30px;
+            padding: 20px;
             text-align: center;
-            border: 2px solid #e8f5e9;
+            border: 2px solid #e8e3f5;
             transition: all 0.3s ease;
             cursor: pointer;
             position: relative;
@@ -245,15 +249,15 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, rgba(129, 199, 132, 0.1) 0%, rgba(76, 175, 80, 0.1) 100%);
+            background: linear-gradient(135deg, rgba(155, 89, 182, 0.1) 0%, rgba(46, 204, 113, 0.1) 100%);
             opacity: 0;
             transition: opacity 0.3s ease;
         }
         
         .version-card:hover {
-            transform: translateY(-7px);
-            border-color: #81c784;
-            box-shadow: 0 12px 25px rgba(129, 199, 132, 0.25);
+            transform: translateY(-5px);
+            border-color: #9b59b6;
+            box-shadow: 0 8px 20px rgba(155, 89, 182, 0.2);
         }
         
         .version-card:hover::before {
@@ -261,44 +265,43 @@
         }
         
         .version-icon {
-            font-size: 3rem;
-            margin-bottom: 20px;
-            color: #2e7d32;
+            font-size: 2.5rem;
+            margin-bottom: 15px;
             position: relative;
             z-index: 2;
         }
         
         .version-card.windows .version-icon {
-            color: #2e7d32;
+            color: #8e44ad;
         }
         
         .version-card.android .version-icon {
-            color: #689f38;
+            color: #27ae60;
         }
         
         .version-title {
-            font-size: 1.6rem;
-            margin-bottom: 15px;
-            color: #2e7d32;
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+            color: #8e44ad;
             position: relative;
             z-index: 2;
         }
         
         .version-desc {
-            font-size: 1.05rem;
+            font-size: 0.95rem;
             color: #666;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             position: relative;
             z-index: 2;
-            max-width: 400px;
+            max-width: 100%;
             margin-left: auto;
             margin-right: auto;
         }
         
         .version-btn {
             display: inline-block;
-            padding: 12px 35px;
-            background: linear-gradient(to right, #2e7d32, #4caf50);
+            padding: 10px 30px;
+            background: linear-gradient(to right, #8e44ad, #27ae60);
             color: white;
             text-decoration: none;
             border-radius: 40px;
@@ -306,36 +309,38 @@
             transition: all 0.3s ease;
             position: relative;
             z-index: 2;
-            box-shadow: 0 4px 15px rgba(46, 125, 50, 0.3);
+            box-shadow: 0 4px 15px rgba(142, 68, 173, 0.3);
+            font-size: 0.95rem;
         }
         
         .version-btn:hover {
             transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(46, 125, 50, 0.4);
-            background: linear-gradient(to right, #388e3c, #4caf50);
+            box-shadow: 0 6px 20px rgba(142, 68, 173, 0.4);
+            background: linear-gradient(to right, #9b59b6, #2ecc71);
         }
         
         .close-btn {
             position: absolute;
-            top: 20px;
-            right: 20px;
-            width: 40px;
-            height: 40px;
-            background: #f1f8e9;
+            top: 15px;
+            right: 15px;
+            width: 36px;
+            height: 36px;
+            background: linear-gradient(135deg, #9b59b6 0%, #2ecc71 100%);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            font-size: 1.5rem;
-            color: #2e7d32;
+            font-size: 1.2rem;
+            color: white;
             transition: all 0.3s ease;
             z-index: 3;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
         }
         
         .close-btn:hover {
-            background: #e8f5e9;
-            transform: rotate(90deg);
+            transform: scale(1.1) rotate(90deg);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
         }
         
         .info-grid {
@@ -346,36 +351,37 @@
         }
         
         .info-card {
-            background: #f8fcf7;
-            padding: 30px;
+            background: #f8f7fc;
+            padding: 25px;
             border-radius: 12px;
-            border-left: 4px solid #81c784;
+            border-left: 4px solid #9b59b6;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
             transition: all 0.3s ease;
         }
         
         .info-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(129, 199, 132, 0.15);
+            box-shadow: 0 10px 25px rgba(155, 89, 182, 0.15);
         }
         
         .info-card h3 {
-            color: #2e7d32;
+            color: #8e44ad;
             margin-bottom: 20px;
             display: flex;
             align-items: center;
             gap: 12px;
-            font-size: 1.4rem;
+            font-size: 1.3rem;
         }
         
         .info-card h3 i {
             width: 40px;
             height: 40px;
-            background: rgba(129, 199, 132, 0.2);
+            background: rgba(155, 89, 182, 0.15);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
+            color: #8e44ad;
         }
         
         .info-card ul, .info-card ol {
@@ -395,16 +401,39 @@
             top: 10px;
             width: 6px;
             height: 6px;
-            background: #81c784;
+            background: #9b59b6;
             border-radius: 50%;
         }
         
         footer {
             text-align: center;
             padding: 30px 20px;
-            background: #2e7d32;
+            background: linear-gradient(to right, #8e44ad, #27ae60);
             color: white;
             font-size: 1rem;
+        }
+        
+        .back-btn {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            width: 36px;
+            height: 36px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1rem;
+            color: white;
+            transition: all 0.3s ease;
+            z-index: 3;
+        }
+        
+        .back-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateX(-3px);
         }
         
         @media (max-width: 768px) {
@@ -431,7 +460,8 @@
             }
             
             .version-container {
-                padding: 30px 20px;
+                padding: 20px 15px;
+                max-width: 350px;
             }
             
             .info-grid {
@@ -459,7 +489,7 @@
                 
                 <a id="downloadBtn" class="download-btn">
                     <i class="fas fa-download"></i>
-                    <span>Super BMI calculator</span>
+                    <span>下载应用</span>
                 </a>
                 
                 <div class="download-info">
@@ -512,7 +542,7 @@
         </div>
         
         <footer>
-            <p>© 2023 Super BMI Calculator | 科学计算，健康生活</p>
+            <p>© 2025 Super BMI Calculator | 科学计算，健康生活</p>
             <p>基于GitHub Releases安全分发 | 用户名: tusirweb050016</p>
         </footer>
     </div>
@@ -521,8 +551,11 @@
     <div class="version-selector" id="versionSelector">
         <div class="version-container">
             <div class="close-btn" id="closeBtn">×</div>
+            <div class="back-btn" id="backBtn">
+                <i class="fas fa-arrow-left"></i>
+            </div>
             <div class="version-header">
-                <h2>选择您的版本</h2>
+                <h2>选择版本下载</h2>
                 <p>请选择适合您设备的安装程序</p>
             </div>
             
@@ -546,7 +579,7 @@
                     </div>
                     <h3 class="version-title">Android 版本</h3>
                     <p class="version-desc">支持Android 8.0及以上系统，轻量级设计</p>
-                    <a href="https://github.com/tusirweb050016/tusirweb050016.github.io/releases/download/v1.0/Super_BMI_calculator.apk" 
+                    <a href="https://github.com/tusirweb050016/tusirweb050016.github.io/releases/download/untagged-1206ced7cab1bd72aaae/Super_BMI_calculator.apk" 
                        class="version-btn" 
                        download="Super_BMI_Calculator_Android.apk">
                        下载Android版本
@@ -561,6 +594,7 @@
         const downloadBtn = document.getElementById('downloadBtn');
         const versionSelector = document.getElementById('versionSelector');
         const closeBtn = document.getElementById('closeBtn');
+        const backBtn = document.getElementById('backBtn');
         
         // 打开版本选择器
         downloadBtn.addEventListener('click', function() {
@@ -570,6 +604,12 @@
         
         // 关闭版本选择器
         closeBtn.addEventListener('click', function() {
+            versionSelector.style.display = 'none';
+            document.body.style.overflow = '';
+        });
+        
+        // 后退按钮功能
+        backBtn.addEventListener('click', function() {
             versionSelector.style.display = 'none';
             document.body.style.overflow = '';
         });
