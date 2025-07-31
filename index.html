@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Super BMI calculator</title>
+    <title>Super BMI calculator - 多版本下载</title>
     <style>
         * {
             margin: 0;
@@ -37,6 +37,7 @@
             color: white;
             text-align: center;
             padding: 30px 20px;
+            position: relative;
         }
         
         header h1 {
@@ -75,6 +76,8 @@
             margin: 25px 0;
             transition: all 0.3s ease;
             box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4);
+            cursor: pointer;
+            position: relative;
         }
         
         .download-btn:hover {
@@ -86,6 +89,133 @@
         .download-info {
             font-size: 0.95rem;
             color: #7f8c8d;
+        }
+        
+        /* 版本选择器样式 */
+        .version-selector {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .version-container {
+            background: white;
+            border-radius: 12px;
+            padding: 40px;
+            width: 90%;
+            max-width: 500px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+            animation: popup 0.4s ease;
+        }
+        
+        @keyframes popup {
+            0% { transform: scale(0.8); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        
+        .version-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .version-header h2 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        
+        .version-options {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .version-card {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 25px;
+            text-align: center;
+            border: 2px solid #e0e0e0;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .version-card:hover {
+            transform: translateY(-5px);
+            border-color: #3498db;
+            box-shadow: 0 8px 20px rgba(52, 152, 219, 0.2);
+        }
+        
+        .version-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: #3498db;
+        }
+        
+        .version-card.windows .version-icon {
+            color: #0078d7;
+        }
+        
+        .version-card.android .version-icon {
+            color: #3ddc84;
+        }
+        
+        .version-title {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+        
+        .version-desc {
+            font-size: 0.95rem;
+            color: #666;
+            margin-bottom: 15px;
+        }
+        
+        .version-btn {
+            display: inline-block;
+            padding: 10px 25px;
+            background: #3498db;
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .version-card.windows .version-btn {
+            background: #0078d7;
+        }
+        
+        .version-card.android .version-btn {
+            background: #3ddc84;
+        }
+        
+        .version-btn:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+        
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            width: 30px;
+            height: 30px;
+            background: #f0f0f0;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1.2rem;
+            color: #666;
         }
         
         .info-section {
@@ -135,6 +265,10 @@
                 padding: 14px 40px;
                 font-size: 1.1rem;
             }
+            
+            .version-container {
+                padding: 25px;
+            }
         }
     </style>
 </head>
@@ -147,13 +281,11 @@
         
         <div class="content">
             <div class="download-section">
-                <p>点击下方按钮下载安装程序</p>
-                <a href="https://github.com/tusirweb050016/tusirweb050016.github.io/releases/download/v1.0/setup.exe" 
-                   class="download-btn" 
-                   download="MyJavaApp_Setup.exe">
+                <p>点击下方按钮选择您的版本</p>
+                <a id="downloadBtn" class="download-btn">
                    下载安装程序
                 </a>
-                <p class="download-info">版本 1.0 | 文件大小: 19.8MB</p>
+                <p class="download-info">支持Windows 7+和Android版本 | 文件大小: 19.8MB</p>
             </div>
             
             <div class="info-section">
@@ -161,7 +293,7 @@
                 <div class="requirements">
                     <ul>
                         <li>操作系统: Windows 7/8/10/11</li>
-                        <li>Java环境: Java Runtime Environment (JRE) 8+</li>
+                        <li>Android: 8.0或更高版本</li>
                         <li>处理器: 1.5 GHz或更高</li>
                         <li>内存: 2GB RAM (推荐4GB)</li>
                         <li>存储空间: 500MB可用空间</li>
@@ -173,10 +305,10 @@
                 <h2>安装步骤</h2>
                 <div class="steps">
                     <ol>
-                        <li>点击上方按钮下载安装程序</li>
-                        <li>运行下载的setup.exe文件</li>
+                        <li>选择并下载适合您设备的版本</li>
+                        <li>运行下载的安装程序</li>
                         <li>按照安装向导完成安装</li>
-                        <li>从开始菜单启动应用程序</li>
+                        <li>从开始菜单/主屏幕启动应用程序</li>
                     </ol>
                 </div>
             </div>
@@ -187,6 +319,7 @@
                     <li>首次运行可能需要几分钟初始化</li>
                     <li>应用已自备Java运行环境，无需安装其他</li>
                     <li>关闭杀毒软件以防误报（软件绝对安全）</li>
+                    <li>Android版本需要允许安装未知来源应用</li>
                 </ul>
             </div>
         </div>
@@ -196,16 +329,96 @@
             <p>托管于GitHub Pages | 用户名: tusirweb050016</p>
         </footer>
     </div>
+    
+    <!-- 版本选择器 -->
+    <div class="version-selector" id="versionSelector">
+        <div class="version-container">
+            <div class="close-btn" id="closeBtn">×</div>
+            <div class="version-header">
+                <h2>选择您的版本</h2>
+                <p>请选择适合您设备的安装程序</p>
+            </div>
+            
+            <div class="version-options">
+                <div class="version-card windows">
+                    <div class="version-icon">
+                        <i class="fab fa-windows"></i>
+                    </div>
+                    <h3 class="version-title">Windows 7+ 版本</h3>
+                    <p class="version-desc">支持Windows 7/8/10/11系统，包含完整Java环境</p>
+                    <a href="https://github.com/tusirweb050016/tusirweb050016.github.io/releases/download/v1.0/Super_BMI_calculator.exe" 
+                       class="version-btn" 
+                       download="Super_BMI_Calculator_Windows.exe">
+                       下载Windows版本
+                    </a>
+                </div>
+                
+                <div class="version-card android">
+                    <div class="version-icon">
+                        <i class="fab fa-android"></i>
+                    </div>
+                    <h3 class="version-title">Android 版本</h3>
+                    <p class="version-desc">支持Android 8.0及以上系统，轻量级设计</p>
+                    <a href="https://github.com/tusirweb050016/tusirweb050016.github.io/releases/download/v1.0/Super_BMI_calculator.apk" 
+                       class="version-btn" 
+                       download="Super_BMI_Calculator_Android.apk">
+                       下载Android版本
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script>
-        // 简单的下载按钮动画
-        const downloadBtn = document.querySelector('.download-btn');
+        // 获取DOM元素
+        const downloadBtn = document.getElementById('downloadBtn');
+        const versionSelector = document.getElementById('versionSelector');
+        const closeBtn = document.getElementById('closeBtn');
+        
+        // 打开版本选择器
         downloadBtn.addEventListener('click', function() {
-            this.innerHTML = '下载中...';
-            
+            versionSelector.style.display = 'flex';
+        });
+        
+        // 关闭版本选择器
+        closeBtn.addEventListener('click', function() {
+            versionSelector.style.display = 'none';
+        });
+        
+        // 点击背景关闭选择器
+        versionSelector.addEventListener('click', function(e) {
+            if (e.target === versionSelector) {
+                versionSelector.style.display = 'none';
+            }
+        });
+        
+        // 为版本卡片添加点击效果
+        const versionCards = document.querySelectorAll('.version-card');
+        versionCards.forEach(card => {
+            card.addEventListener('click', function(e) {
+                if (e.target.classList.contains('version-btn')) return;
+                
+                const btn = this.querySelector('.version-btn');
+                if (btn) {
+                    // 添加点击动画
+                    this.style.transform = 'scale(0.98)';
+                    setTimeout(() => {
+                        this.style.transform = '';
+                    }, 200);
+                    
+                    // 模拟点击下载按钮
+                    setTimeout(() => {
+                        btn.click();
+                    }, 300);
+                }
+            });
+        });
+        
+        // 下载按钮动画
+        downloadBtn.addEventListener('click', function() {
+            this.innerHTML = '选择版本...';
             setTimeout(() => {
                 this.innerHTML = '下载安装程序';
-                alert('下载完成！请运行安装程序。');
             }, 1500);
         });
     </script>
