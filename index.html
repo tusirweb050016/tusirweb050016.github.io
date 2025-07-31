@@ -14,7 +14,7 @@
         }
         
         body {
-            background: linear-gradient(135deg, #f0ecfb 0%, #e6f7ef 100%);
+            background: linear-gradient(135deg, #f3e5f5 0%, #e8f5e9 100%);
             min-height: 100vh;
             padding: 20px;
             display: flex;
@@ -29,13 +29,13 @@
             width: 100%;
             background: white;
             border-radius: 16px;
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
             overflow: hidden;
-            border: 1px solid #e4d8f5;
+            border: 1px solid #e1bee7;
         }
         
         header {
-            background: linear-gradient(to right, #8e44ad, #27ae60);
+            background: linear-gradient(to right, #7b1fa2, #4a148c);
             color: white;
             text-align: center;
             padding: 50px 30px;
@@ -86,17 +86,13 @@
             position: absolute;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, #9b59b6 0%, #2ecc71 100%);
+            background: linear-gradient(135deg, #7b1fa2 0%, #4a148c 100%);
             opacity: 0.1;
         }
         
         .app-icon i {
             font-size: 60px;
-            background: linear-gradient(135deg, #8e44ad, #2ecc71);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            color: transparent;
+            color: #7b1fa2;
         }
         
         .content {
@@ -107,9 +103,9 @@
             text-align: center;
             margin-bottom: 40px;
             padding: 30px;
-            background: #f8f7fc;
+            background: #f9f5fc;
             border-radius: 12px;
-            border: 2px dashed #d8c8f0;
+            border: 2px dashed #d1c4e9;
             position: relative;
         }
         
@@ -118,7 +114,7 @@
             align-items: center;
             justify-content: center;
             padding: 18px 65px;
-            background: linear-gradient(to right, #8e44ad, #27ae60);
+            background: linear-gradient(to right, #388e3c, #4caf50);
             color: white;
             text-decoration: none;
             border-radius: 60px;
@@ -126,7 +122,7 @@
             font-weight: 600;
             margin: 25px 0;
             transition: all 0.3s ease;
-            box-shadow: 0 8px 25px rgba(142, 68, 173, 0.4);
+            box-shadow: 0 8px 25px rgba(56, 142, 60, 0.4);
             position: relative;
             overflow: hidden;
         }
@@ -138,14 +134,14 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(to right, #9b59b6, #2ecc71);
+            background: linear-gradient(to right, #43a047, #4caf50);
             opacity: 0;
             transition: opacity 0.3s ease;
         }
         
         .download-btn:hover {
             transform: translateY(-5px);
-            box-shadow: 0 12px 30px rgba(142, 68, 173, 0.5);
+            box-shadow: 0 12px 30px rgba(56, 142, 60, 0.5);
         }
         
         .download-btn:hover::before {
@@ -166,7 +162,7 @@
         
         .download-info {
             font-size: 1.1rem;
-            color: #8e44ad;
+            color: #4caf50;
             margin-top: 15px;
             display: flex;
             justify-content: center;
@@ -175,7 +171,7 @@
         }
         
         .info-item {
-            background: rgba(142, 68, 173, 0.1);
+            background: rgba(76, 175, 80, 0.1);
             padding: 8px 18px;
             border-radius: 30px;
             display: inline-flex;
@@ -199,13 +195,13 @@
         .version-container {
             background: white;
             border-radius: 16px;
-            padding: 30px;
+            padding: 35px;
             width: 90%;
-            max-width: 500px; /* 缩小弹窗尺寸 */
+            max-width: 300px; /* 减小弹窗尺寸 */
             box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
             animation: popup 0.4s ease;
             position: relative;
-            border: 2px solid #d8c8f0;
+            border: 2px solid #d1c4e9;
         }
         
         @keyframes popup {
@@ -215,11 +211,11 @@
         
         .version-header {
             text-align: center;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
         }
         
         .version-header h2 {
-            color: #8e44ad;
+            color: #7b1fa2;
             margin-bottom: 10px;
             font-size: 1.8rem;
         }
@@ -227,15 +223,15 @@
         .version-options {
             display: flex;
             flex-direction: column;
-            gap: 15px;
+            gap: 20px;
         }
         
         .version-card {
-            background: #f8f7fc;
+            background: #f9f5fc;
             border-radius: 12px;
-            padding: 20px;
+            padding: 25px;
             text-align: center;
-            border: 2px solid #e8e3f5;
+            border: 2px solid #e1bee7;
             transition: all 0.3s ease;
             cursor: pointer;
             position: relative;
@@ -249,15 +245,15 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, rgba(155, 89, 182, 0.1) 0%, rgba(46, 204, 113, 0.1) 100%);
+            background: linear-gradient(135deg, rgba(156, 39, 176, 0.1) 0%, rgba(123, 31, 162, 0.1) 100%);
             opacity: 0;
             transition: opacity 0.3s ease;
         }
         
         .version-card:hover {
             transform: translateY(-5px);
-            border-color: #9b59b6;
-            box-shadow: 0 8px 20px rgba(155, 89, 182, 0.2);
+            border-color: #9c27b0;
+            box-shadow: 0 10px 20px rgba(156, 39, 176, 0.2);
         }
         
         .version-card:hover::before {
@@ -267,33 +263,34 @@
         .version-icon {
             font-size: 2.5rem;
             margin-bottom: 15px;
+            color: #7b1fa2;
             position: relative;
             z-index: 2;
         }
         
         .version-card.windows .version-icon {
-            color: #8e44ad;
+            color: #7b1fa2;
         }
         
         .version-card.android .version-icon {
-            color: #27ae60;
+            color: #689f38;
         }
         
         .version-title {
             font-size: 1.4rem;
-            margin-bottom: 10px;
-            color: #8e44ad;
+            margin-bottom: 12px;
+            color: #7b1fa2;
             position: relative;
             z-index: 2;
         }
         
         .version-desc {
-            font-size: 0.95rem;
+            font-size: 1rem;
             color: #666;
             margin-bottom: 15px;
             position: relative;
             z-index: 2;
-            max-width: 100%;
+            max-width: 350px;
             margin-left: auto;
             margin-right: auto;
         }
@@ -301,7 +298,7 @@
         .version-btn {
             display: inline-block;
             padding: 10px 30px;
-            background: linear-gradient(to right, #8e44ad, #27ae60);
+            background: linear-gradient(to right, #7b1fa2, #9c27b0);
             color: white;
             text-decoration: none;
             border-radius: 40px;
@@ -309,14 +306,21 @@
             transition: all 0.3s ease;
             position: relative;
             z-index: 2;
-            box-shadow: 0 4px 15px rgba(142, 68, 173, 0.3);
-            font-size: 0.95rem;
+            box-shadow: 0 4px 10px rgba(123, 31, 162, 0.3);
+        }
+        
+        .version-btn.android {
+            background: linear-gradient(to right, #388e3c, #4caf50);
+            box-shadow: 0 4px 10px rgba(56, 142, 60, 0.3);
         }
         
         .version-btn:hover {
             transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(142, 68, 173, 0.4);
-            background: linear-gradient(to right, #9b59b6, #2ecc71);
+            box-shadow: 0 6px 15px rgba(123, 31, 162, 0.4);
+        }
+        
+        .version-btn.android:hover {
+            box-shadow: 0 6px 15px rgba(56, 142, 60, 0.4);
         }
         
         .close-btn {
@@ -325,7 +329,7 @@
             right: 15px;
             width: 36px;
             height: 36px;
-            background: linear-gradient(135deg, #9b59b6 0%, #2ecc71 100%);
+            background: linear-gradient(to right, #7b1fa2, #9c27b0);
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -339,34 +343,34 @@
         }
         
         .close-btn:hover {
-            transform: scale(1.1) rotate(90deg);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            transform: rotate(90deg) scale(1.1);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
         }
         
         .info-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
+            gap: 25px;
             margin-top: 40px;
         }
         
         .info-card {
-            background: #f8f7fc;
+            background: #f9f5fc;
             padding: 25px;
             border-radius: 12px;
-            border-left: 4px solid #9b59b6;
+            border-left: 4px solid #9c27b0;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
             transition: all 0.3s ease;
         }
         
         .info-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(155, 89, 182, 0.15);
+            box-shadow: 0 10px 25px rgba(156, 39, 176, 0.1);
         }
         
         .info-card h3 {
-            color: #8e44ad;
-            margin-bottom: 20px;
+            color: #7b1fa2;
+            margin-bottom: 18px;
             display: flex;
             align-items: center;
             gap: 12px;
@@ -374,22 +378,22 @@
         }
         
         .info-card h3 i {
-            width: 40px;
-            height: 40px;
-            background: rgba(155, 89, 182, 0.15);
+            width: 36px;
+            height: 36px;
+            background: rgba(156, 39, 176, 0.1);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #8e44ad;
+            color: #7b1fa2;
         }
         
         .info-card ul, .info-card ol {
-            padding-left: 30px;
+            padding-left: 25px;
         }
         
         .info-card li {
-            margin-bottom: 14px;
+            margin-bottom: 12px;
             position: relative;
             padding-left: 10px;
         }
@@ -401,39 +405,16 @@
             top: 10px;
             width: 6px;
             height: 6px;
-            background: #9b59b6;
+            background: #9c27b0;
             border-radius: 50%;
         }
         
         footer {
             text-align: center;
-            padding: 30px 20px;
-            background: linear-gradient(to right, #8e44ad, #27ae60);
+            padding: 25px 20px;
+            background: linear-gradient(to right, #7b1fa2, #4a148c);
             color: white;
             font-size: 1rem;
-        }
-        
-        .back-btn {
-            position: absolute;
-            top: 15px;
-            left: 15px;
-            width: 36px;
-            height: 36px;
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            font-size: 1rem;
-            color: white;
-            transition: all 0.3s ease;
-            z-index: 3;
-        }
-        
-        .back-btn:hover {
-            background: rgba(255, 255, 255, 0.3);
-            transform: translateX(-3px);
         }
         
         @media (max-width: 768px) {
@@ -460,8 +441,7 @@
             }
             
             .version-container {
-                padding: 20px 15px;
-                max-width: 350px;
+                padding: 25px 15px;
             }
             
             .info-grid {
@@ -489,7 +469,7 @@
                 
                 <a id="downloadBtn" class="download-btn">
                     <i class="fas fa-download"></i>
-                    <span>下载应用</span>
+                    <span>Super BMI calculator</span>
                 </a>
                 
                 <div class="download-info">
@@ -551,11 +531,8 @@
     <div class="version-selector" id="versionSelector">
         <div class="version-container">
             <div class="close-btn" id="closeBtn">×</div>
-            <div class="back-btn" id="backBtn">
-                <i class="fas fa-arrow-left"></i>
-            </div>
             <div class="version-header">
-                <h2>选择版本下载</h2>
+                <h2>选择您的版本</h2>
                 <p>请选择适合您设备的安装程序</p>
             </div>
             
@@ -580,7 +557,7 @@
                     <h3 class="version-title">Android 版本</h3>
                     <p class="version-desc">支持Android 8.0及以上系统，轻量级设计</p>
                     <a href="https://github.com/tusirweb050016/tusirweb050016.github.io/releases/download/untagged-1206ced7cab1bd72aaae/Super_BMI_calculator.apk" 
-                       class="version-btn" 
+                       class="version-btn android" 
                        download="Super_BMI_Calculator_Android.apk">
                        下载Android版本
                     </a>
@@ -594,7 +571,6 @@
         const downloadBtn = document.getElementById('downloadBtn');
         const versionSelector = document.getElementById('versionSelector');
         const closeBtn = document.getElementById('closeBtn');
-        const backBtn = document.getElementById('backBtn');
         
         // 打开版本选择器
         downloadBtn.addEventListener('click', function() {
@@ -604,12 +580,6 @@
         
         // 关闭版本选择器
         closeBtn.addEventListener('click', function() {
-            versionSelector.style.display = 'none';
-            document.body.style.overflow = '';
-        });
-        
-        // 后退按钮功能
-        backBtn.addEventListener('click', function() {
             versionSelector.style.display = 'none';
             document.body.style.overflow = '';
         });
